@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+# GENV(1)
+#
+# NAME
+#   gvar -- display, set, or remove global variables.
+#
+# SYNOPSIS
+#   gvar [OPTION]... [VARIABLE=VALUE ...]...
+#
+# DESCRIPTION
+#   Arguments of the form 'VARIABLE=VALUE' set the global variable VARIABLE to
+#   value VALUE.
+#   $ gvar VARIABLE=VALUE
+#
+#   VALUE can be empty ('VARIABLE='). Setting a variable to an empty value is
+#   different from unsetting it.
+#   $ gvar VARIABLE=
+#
+#   Print the value of the global variable VARIABLE.
+#   $ gvar VARIABLE
+#
+#   If no argument is specified, prints out the names and values of the global
+#   variables, with one name/value pair per line.
+#   $ gvar
+#
+# OPTIONS
+#   -u VARIABLE
+#   --unset=VARIABLE
+#        remove variable VARIABLE, if it was set.
+#
+#   -h
+#   --help
+#       display this help and exit.
+#
+#   -v
+#   --version
+#       output version information and exit.
+#
+# EXIT STATUS
+#     The gvar utility exits 0 on success, and >0 if an error occurs.
+
+
+file=/home/.gvar
