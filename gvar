@@ -41,4 +41,39 @@
 #     The gvar utility exits 0 on success, and >0 if an error occurs.
 
 
-file=/home/.gvar
+version="0.1.0"
+file=$HOME/.gvar
+
+for i in "$@"; do
+  case $i in
+    -h|--help)
+      echo "gvar - display, set, or remove global variables."
+      echo "options:"
+      echo "-h, --help       show help"
+      echo "-v, --version    show version"
+    ;;
+    -v|--version)
+      echo "gvar $version"
+    ;;
+    -u)
+      VALUE="$2"
+      echo $VALUE
+    ;;
+    --unset=*)
+      VALUE="${i#*=}"
+      echo $VALUE
+    ;;
+    *=*)
+      VARIABLE="${i%=*}"
+      VALUE="${i#*=}"
+      echo $VARIABLE
+      echo $VALUE
+    ;;
+    *)
+    ;;
+  esac
+done
+
+if [[ $# == 0 ]]; then
+  cat $file
+fi
