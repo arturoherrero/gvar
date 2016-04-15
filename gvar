@@ -43,17 +43,16 @@
 
 version="0.1.0"
 file=$HOME/.gvar
+test -e $file || touch $file
 
 for i in "$@"; do
   case $i in
     -h|--help)
-      echo "gvar - display, set, or remove global variables."
-      echo "options:"
-      echo "-h, --help       show help"
-      echo "-v, --version    show version"
+      echo "usage: gvar [<variable>[=<value>]] [-u <variable> | --unset=<variable>]"
+      echo "            [-h | --help] [-v | --version]"
     ;;
     -v|--version)
-      echo "gvar $version"
+      echo "gvar version $version"
     ;;
     -u)
       VALUE="$2"
@@ -70,6 +69,8 @@ for i in "$@"; do
       echo $VALUE
     ;;
     *)
+      VARIABLE="$1"
+      echo $VARIABLE
     ;;
   esac
 done
