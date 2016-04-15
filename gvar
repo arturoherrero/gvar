@@ -45,22 +45,30 @@ version="0.1.0"
 file=$HOME/.gvar
 test -e $file || touch $file
 
-for i in "$@"; do
-  case $i in
+getvar() {
+  cat $file | grep -w $1 | cut -d'=' -f2
+}
+
+for arg in "$@"; do
+  case $arg in
     -h|--help)
-      echo "usage: gvar [<variable>[=<value>]] [-u <variable> | --unset=<variable>]"
+      echo "usage: gvar [variable[=value]] [-u variable | --unset=variable]"
       echo "            [-h | --help] [-v | --version]"
+      break
     ;;
     -v|--version)
       echo "gvar version $version"
+      break
     ;;
     -u)
       VALUE="$2"
       echo $VALUE
+      break
     ;;
     --unset=*)
       VALUE="${i#*=}"
       echo $VALUE
+      break
     ;;
     *=*)
       VARIABLE="${i%=*}"
@@ -69,8 +77,9 @@ for i in "$@"; do
       echo $VALUE
     ;;
     *)
-      VARIABLE="$1"
-      echo $VARIABLE
+      variable="$1"
+      getvar $variable
+      break
     ;;
   esac
 done
