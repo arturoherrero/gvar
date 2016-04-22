@@ -12,8 +12,12 @@ help() {
   echo "            [-h | --help] [-v | --version]"
 }
 
-getvar() {
+get_variable() {
   cat $FILE | grep -w $1 | cut -d'=' -f2
+}
+
+remove_variable() {
+  sed -i '' "/^$1=/d" $HOME/.gvar
 }
 
 for option in "$@"; do
@@ -27,24 +31,24 @@ for option in "$@"; do
       exit 0
     ;;
     -u)
-      VALUE="$2"
-      echo $VALUE
+      variable="$2"
+      remove_variable $variable
       exit 0
     ;;
     --unset=*)
-      VALUE="${i#*=}"
-      echo $VALUE
+      variable="${option#*=}"
+      remove_variable $variable
       exit 0
     ;;
     *=*)
-      VARIABLE="${i%=*}"
+      VARIABLE="${option%=*}"
       VALUE="${i#*=}"
       echo $VARIABLE
       echo $VALUE
     ;;
     *)
       variable="$1"
-      getvar $variable
+      get_variable $variable
       exit 0
     ;;
   esac
