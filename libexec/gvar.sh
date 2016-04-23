@@ -1,19 +1,25 @@
 #!/usr/bin/env bash
 
+VERSION=0.1.0
 FILE=$HOME/.gvar
+
 test -e $FILE || touch $FILE
 
 version() {
-  echo "gvar version 0.1.0"
+  echo "gvar version $VERSION"
 }
 
 help() {
-  echo "usage: gvar [variable[=value]] [-u variable | --unset=variable]"
-  echo "            [-h | --help] [-v | --version]"
+  echo "usage: gvar [<variable>[=<value>]] [-u <variable> | --unset=<variable>]"
+  echo "            [-d | --delete-environment] [-h | --help] [-v | --version]"
 }
 
 get_variable() {
   cat $FILE | grep -w $1 | cut -d'=' -f2
+}
+
+set_variable() {
+  echo $1=$2 >> $FILE
 }
 
 remove_variable() {
@@ -40,11 +46,14 @@ for option in "$@"; do
       remove_variable $variable
       exit 0
     ;;
+    -d | --delete-environment)
+      echo -n > $FILE
+    ;;
     *=*)
-      VARIABLE="${option%=*}"
-      VALUE="${i#*=}"
-      echo $VARIABLE
-      echo $VALUE
+      variable="${option%=*}"
+      value="${option#*=}"
+      remove_variable $variable
+      set_variable $variable $value
     ;;
     *)
       variable="$1"
