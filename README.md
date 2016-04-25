@@ -1,5 +1,7 @@
 # gvar
 
+[![Build Status](https://travis-ci.org/arturoherrero/gvar.svg?branch=master)](https://travis-ci.org/arturoherrero/gvar)
+
 `gvar` - display, set, or remove global variables.
 
 

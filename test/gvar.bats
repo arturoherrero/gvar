@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
 gvar="${BATS_TEST_DIRNAME}/../libexec/gvar.sh"
+FILE=$HOME/.gvar
 
 setup() {
-  mv $HOME/.gvar $HOME/.gvar.copy
-  echo OTHER=other > $HOME/.gvar
-  echo TEST=test >> $HOME/.gvar
-  echo TESTING=abc >> $HOME/.gvar
+  test -e $FILE || touch $FILE
+  mv $FILE $FILE.copy
+  echo OTHER=other  > $FILE
+  echo TEST=test   >> $FILE
+  echo TESTING=abc >> $FILE
 }
 
 @test "invoking gvar prints the names and values of the global variables" {
@@ -93,5 +95,5 @@ setup() {
 }
 
 teardown() {
-  mv $HOME/.gvar.copy $HOME/.gvar
+  mv $FILE.copy $FILE
 }
