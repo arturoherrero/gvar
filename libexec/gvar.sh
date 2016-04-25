@@ -23,7 +23,7 @@ set_variable() {
 }
 
 remove_variable() {
-  sed -i '' "/^$1=/d" $HOME/.gvar
+  sed -i.bak "/^$1=/d" $FILE
 }
 
 for option in "$@"; do
