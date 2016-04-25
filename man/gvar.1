@@ -1,0 +1,130 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "GVAR" "1" "April 2016" "" ""
+.
+.SH "NAME"
+\fBgvar\fR \- display, set, or remove global variables
+.
+.SH "SYNOPSIS"
+\fBgvar\fR [\fIvariable\fR[=\fIvalue\fR] \.\.\.]
+.
+.br
+\fBgvar\fR \fB\-u\fR \fIvariable\fR | \fB\-\-unset\fR=\fIvariable\fR
+.
+.br
+\fBgvar\fR \fB\-d\fR | \fB\-\-delete\-environment\fR
+.
+.br
+\fBgvar\fR \fB\-h\fR | \fB\-\-help\fR
+.
+.br
+\fBgvar\fR \fB\-v\fR | \fB\-\-version\fR
+.
+.SH "DESCRIPTION"
+\fBgvar\fR is a pure Bash key\-value store where each user has a different collection of data\. The records are stored in the user\'s home directory\.
+.
+.SH "OPTIONS"
+The following options are available:
+.
+.TP
+\fB\-u\fR \fIVARIABLE\fR, \fB\-\-unset\fR=\fIVARIABLE\fR
+Remove variable VARIABLE, if it was set\.
+.
+.TP
+\fB\-d\fR, \fB\-\-delete\-environment\fR
+Remove all the global variables\.
+.
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Display the command options and exit\.
+.
+.TP
+\fB\-v\fR, \fB\-\-version\fR
+Output version information and exit\.
+.
+.SH "EXAMPLES"
+To print out the names and values of all the global variables, use:
+.
+.IP "" 4
+.
+.nf
+
+$ gvar
+.
+.fi
+.
+.IP "" 0
+.
+.P
+To set global variables, use arguments of the form \fIVARIABLE\fR=\fIVALUE\fR, setting variable \fIVARIABLE\fR to value \fIVALUE\fR:
+.
+.IP "" 4
+.
+.nf
+
+$ gvar VARIABLE=VALUE
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Setting a global variable to an empty value is different from unsetting it:
+.
+.IP "" 4
+.
+.nf
+
+$ gvar VARIABLE=
+.
+.fi
+.
+.IP "" 0
+.
+.P
+To print the value of the global variable \fIVARIABLE\fR, use:
+.
+.IP "" 4
+.
+.nf
+
+$ gvar VARIABLE
+.
+.fi
+.
+.IP "" 0
+.
+.P
+To remove (unset) a global variable \fIVARIABLE\fR, use:
+.
+.IP "" 4
+.
+.nf
+
+$ gvar \-u VARIABLE
+$ gvar \-\-unset=VARIABLE
+.
+.fi
+.
+.IP "" 0
+.
+.P
+To delete the environment, removing all the global variables, use:
+.
+.IP "" 4
+.
+.nf
+
+$ gvar \-d
+$ gvar \-\-delete\-environment
+.
+.fi
+.
+.IP "" 0
+.
+.SH "EXIT STATUS"
+The gvar utility exits 0 on success, and > 0 if an error occurs\.
+.
+.SH "COPYRIGHT"
+gvar is copyright (c) Arturo Herrero, \fIhttp://arturoherrero\.com/\fR

@@ -1,0 +1,73 @@
+gvar(1) -- display, set, or remove global variables
+===================================================
+
+## SYNOPSIS
+
+  `gvar` [<variable>[=<value>] ...]  
+  `gvar` `-u` <variable> | `--unset`=<variable>  
+  `gvar` `-d` | `--delete-environment`  
+  `gvar` `-h` | `--help`  
+  `gvar` `-v` | `--version`  
+
+
+## DESCRIPTION
+
+  **gvar** is a pure Bash key-value store where each user has a different collection
+  of data. The records are stored in the user's home directory.
+
+
+## OPTIONS
+
+The following options are available:
+
+  * `-u` <VARIABLE>, `--unset`=<VARIABLE>:
+    Remove variable VARIABLE, if it was set.
+
+  * `-d`, `--delete-environment`:
+    Remove all the global variables.
+
+  * `-h`, `--help`:
+    Display the command options and exit.
+
+  * `-v`, `--version`:
+    Output version information and exit.
+
+
+## EXAMPLES
+
+  To print out the names and values of all the global variables, use:
+
+    $ gvar
+
+  To set global variables, use arguments of the form <VARIABLE>=<VALUE>,
+  setting variable <VARIABLE> to value <VALUE>:
+
+    $ gvar VARIABLE=VALUE
+
+  Setting a global variable to an empty value is different from unsetting it:
+
+    $ gvar VARIABLE=
+
+  To print the value of the global variable <VARIABLE>, use:
+
+    $ gvar VARIABLE
+
+  To remove (unset) a global variable <VARIABLE>, use:
+
+    $ gvar -u VARIABLE
+    $ gvar --unset=VARIABLE
+
+  To delete the environment, removing all the global variables, use:
+
+    $ gvar -d
+    $ gvar --delete-environment
+
+
+## EXIT STATUS
+
+  The gvar utility exits 0 on success, and > 0 if an error occurs.
+
+
+## COPYRIGHT
+
+  gvar is copyright (c) Arturo Herrero, <http://arturoherrero.com/>
