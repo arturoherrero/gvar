@@ -13,15 +13,15 @@ of data. The records are stored in the user's home directory.
 
 1. Clone this repository:
 
-    $ git clone git@github.com:arturoherrero/gvar.git
+        $ git clone git@github.com:arturoherrero/gvar.git
 
 2. Add `gvar/bin/` to your `PATH`:
 
-    $ echo 'export PATH="${PATH}:path/to/gvar/bin"' >> ~/.bash_profile
+        $ echo 'export PATH="${PATH}:path/to/gvar/bin"' >> ~/.bash_profile
 
 3. Source your profile
 
-    $ source ~/.bash_profile
+        $ source ~/.bash_profile
 
 
 ## Usage
