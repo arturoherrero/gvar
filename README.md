@@ -1,5 +1,6 @@
 # gvar
 
+[![Code Climate](https://codeclimate.com/github/arturoherrero/gvar/badges/gpa.svg)](https://codeclimate.com/github/arturoherrero/gvar)
 [![Build Status](https://travis-ci.org/arturoherrero/gvar.svg?branch=master)](https://travis-ci.org/arturoherrero/gvar)
 
 `gvar` - display, set, or remove global variables.

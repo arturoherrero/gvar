@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-script_path=$(cd $(dirname $0); pwd -P )
+script_path=$(cd "$(dirname "$0")" || return; pwd -P)
 
-$script_path/../libexec/gvar.sh "$@"
+"$script_path"/../libexec/gvar.sh "$@"
