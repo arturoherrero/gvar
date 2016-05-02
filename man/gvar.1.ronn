@@ -13,7 +13,7 @@ gvar(1) -- display, set, or remove global variables
 ## DESCRIPTION
 
   **gvar** is a pure Bash key-value store where each user has a different collection
-  of data. The records are stored in the user's home directory.
+  of data. The records are stored in the user's home directory as `~/.gvar` file.
 
 
 ## OPTIONS
