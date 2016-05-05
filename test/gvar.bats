@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-gvar="${BATS_TEST_DIRNAME}/../libexec/gvar.sh"
+gvar="${BATS_TEST_DIRNAME}/../bin/gvar"
 FILE=$HOME/.gvar
 
 setup() {
