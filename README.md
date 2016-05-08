@@ -37,6 +37,12 @@ Source your profile:
 $ source ~/.bash_profile
 ```
 
+#### OS X
+
+```shell
+$ brew tap arturoherrero/formulae
+$ brew install gvar
+```
 
 ## Usage
 
