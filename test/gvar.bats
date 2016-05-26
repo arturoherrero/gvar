@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bats
 
 gvar="${BATS_TEST_DIRNAME}/../bin/gvar"
 FILE=$HOME/.gvar
